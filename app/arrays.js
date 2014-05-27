@@ -7,11 +7,16 @@ define(function() {
     },
 
     sum : function(arr) {
+        return arr.reduce(function(sum, curr) {
+            return sum + curr;
+        }, 0);
+
+        /*
         var sum = 0;
         arr.forEach(function(a) {
             sum += a;
         });
-        return sum;
+        return sum;*/
     },
 
     remove : function(arr, item) {
