@@ -9,16 +9,15 @@ define([ 'jquery' ], function($) {
     },
 
     manipulateRemoteData : function(url) {
-    	var deferred = $.Deferred();
-
-    	$.get(url).then(function(data) {
-    		var names = $.map(data.people, function(person) {
-    			return person.name;
-    		});
-    		deferred.resolve(names.sort());
-    	});
-
-    	return deferred.promise();
+    	var promise = new Promise(function(resolve, reject) {
+            $.get(url).then(function(data) {
+                var names = $.map(data.people, function(person) {
+                    return person.name;
+                });
+                resolve(names.sort());
+            });
+        });
+    	return promise;
     }
   };
 });
