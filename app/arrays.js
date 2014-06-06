@@ -7,6 +7,7 @@ define(function() {
     },
 
     sum : function(arr) {
+        // reduce applies a function against an accumulator for an array
         return arr.reduce(function(sum, curr) {
             return sum + curr;
         }, 0);
@@ -112,6 +113,7 @@ define(function() {
     },
 
     findAllOccurrences : function(arr, target) {
+        /*
         var occ = [];
         for (var i = 0; i < arr.length; i++) {
             if (arr[i] === target) {
@@ -119,6 +121,14 @@ define(function() {
             }
         }
         return occ;
+        */
+        // 2nd approach: using reduce
+        return arr.reduce(function(curr, item, index) {
+            if (item == target) {
+                curr.push(index);
+            }
+            return curr;
+        }, []);
     }
   };
 });
